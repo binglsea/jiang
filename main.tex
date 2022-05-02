@@ -1,0 +1,192 @@
+\documentclass[zihao=-4,heading=true,a4paper,twoside,openany]{ctexbook}
+%\documentclass[hep,10pt]{hepbook}
+%\usepackage{HEP}
+\usepackage[utf8]{inputenc}
+\usepackage[OT2,OT1]{fontenc}
+%\pagestyle{empty}
+\input HZcaption
+\input command
+
+% packages for page layout
+\usepackage{geometry}
+\geometry{a4paper,total={171.8mm,246.2mm},left=19.1mm,top=25.4mm,}
+%\usepackage[body={132mm,198mm},centering]{geometry}
+
+\usepackage{xltxtra,fontspec,xunicode}
+
+% package for colors
+\usepackage{xcolor}
+\usepackage[contents=征求意见稿22.03]{background}
+
+% packages for fonts
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+% packages for graphics
+\usepackage{graphicx}
+\graphicspath{ {code/} }
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{capt-of}
+\usepackage{cutwin}
+\usepackage{animate}
+\usepackage{tikz}
+
+\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE,RO]{\leftmark}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+%\fancyfoot[LO,RE]{更新至\today}
+
+% package for quotes
+\usepackage{csquotes}
+
+% redefine itemize
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+\setlist{nosep}
+
+% package for hyperlinks
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black}
+
+\usepackage[T1]{fontenc}
+
+% packages for footnotes
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{perpage}
+\MakePerPage{footnote} 
+
+% packages for bibliography
+%\bibliographystyle{alpha}
+\usepackage[backend=biber,style=gb7714-2015,gbpub=false,sorting=none]{biblatex}
+\addbibresource{./ref/ref.bib}
+
+\usepackage{imakeidx}
+\makeindex
+
+%\usepackage{svg}
+\usepackage{listings}
+\lstset{ % 编程代码整体设置
+	basicstyle=\sffamily,
+	keywordstyle=\bfseries,
+	commentstyle=\rmfamily\itshape,
+	stringstyle=\ttfamily,
+	numbers=left,
+	escapechar=`,
+	numberstyle=\footnotesize
+}
+
+\usepackage{setspace}
+
+% packages for definitions, theorems, proofs.
+\usepackage{amsthm}
+\newtheorem{definition}{定义}
+\newtheorem*{definition*}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem*{theorem*}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}[theorem]
+\newtheorem{example}{例}
+\let\oldproof\proof
+\renewcommand{\proof}{\color{gray}\oldproof}
+% counter controlling
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
+\counterwithin{definition}{section}
+\counterwithin{theorem}{section}
+\counterwithin{lemma}{section}
+\counterwithin{example}{section}
+\counterwithin{section}{part}
+\setcounter{tocdepth}{1}
+
+% package for subfiles
+\usepackage{subfiles}
+
+%\usepackage{datetime2}
+
+\frontmatter
+
+\title{\begin{kaishu}数学：编程与作图\end{kaishu}\\
+	Python、PostScript 和 SVG 的浅入}
+\author{\kaishu 龙\,  冰}
+\date{}
+%=====================================================================================================================
+\begin{document}
+\begin{titlepage}
+	\maketitle
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{5}%
+\subfile{preface}%\cdp
+\markboth{目\quad 录}{目\quad 录}
+\tableofcontents
+
+\mainmatter
+\pagenumbering{arabic}
+
+\part{\begin{lishu}数学：表达美和创造美\end{lishu}}\label{partI}
+\subfile{part1_intro.tex}
+\chapter{数学：表达美和创造美}\label{ch1}
+ \begin{flushright}
+	\begin{kaishu}
+		万物皆数.\\
+	\end{kaishu}
+	- 毕达哥拉斯
+ \end{flushright}
+\section{万物皆数?}\label{ch1.1}
+  \subfile{chap1/numbers.tex}
+\section{数的进位制}\subfile{chap1/bases.tex}
+\section{偏爱有理数}\subfile{chap1/rationals.tex}
+\section{尺寸}\subfile{chap1/sizes.tex}
+\section{汉字的数字化}\subfile{chap1/chars.tex}
+\section{颜色}\subfile{chap1/colors.tex}
+
+\chapter{图: 更优美地表达数学}\label{ch2}
+\subfile{chap1/graphs.tex}
+
+\part{\begin{lishu}Python 编程\end{lishu}}\label{partII}
+\chapter{Python 入门}\label{chap3}
+\section{关于 Python}\subfile{chap3/py_intro.tex}\label{chap:3.1}
+\section{安装 Python 开发环境软件集 Anaconda}
+ \subfile{chap3/py_install.tex}\label{chap:3.2}
+
+\section{初识 Spyder}
+ \subfile{chap3/spyder1.tex}\label{chap:3.3}
+\section{初识 Jupyter}
+\subfile{chap3/jupyter1.tex}\label{chap:3.4}
+
+\section{常用进位制}\label{chap:3.5}
+\subfile{chap3/nadic.tex}
+
+\chapter{Python 应用}
+\section{Jieba}
+\subfile{chap4/jieba.tex}
+
+\part{\begin{lishu}PostScript 编程作图\end{lishu}}
+\section{Some graphs}
+\subfile{ps/3.1.tex}
+
+\section{A List}
+\subfile{ref/reference.tex}
+
+\part{\begin{lishu}Python 作图\end{lishu}}
+
+\backmatter
+
+\printbibliography
+
+\begin{small}
+	\thispagestyle{empty}
+	\onecolumn
+	\addcontentsline{toc}{chapter}{\indexname}
+	\printindex
+\end{small}
+\vfill
+\eject
+
+\end{document}
